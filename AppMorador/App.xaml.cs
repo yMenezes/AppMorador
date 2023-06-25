@@ -1,4 +1,6 @@
-﻿namespace AppMorador;
+﻿using AppMorador.Views.Moradores;
+namespace AppMorador;
+
 
 public partial class App : Application
 {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMorador.Views.Moradores.CadastroMoradorView"
+             Shell.PresentationMode="Animated"
+             Title="CadastroMoradorView">
+    <ScrollView>
+    <VerticalStackLayout Spacing="3" Padding="15">
+            <Label Text="Id" FontSize="Medium" />
+            <Entry Text="{Binding Id}" IsEnabled="False" FontSize="Medium" />
+
+            <Label Text="Nome" FontSize="Medium" />
+            <Entry Text="{Binding Nome}" FontSize="Medium" />
+        
+            <Label Text="Cpf" FontSize="Medium" />
+            <Entry Text="{Binding Cpf}" FontSize="Medium" />
+
+            <Label Text="Telefone" FontSize="Medium" />
+            <Entry Text="{Binding Telefone}" FontSize="Medium" />
+
+            <Label Text="Apartamento" FontSize="Medium" />
+            <Entry Text="{Binding IdApartamento}" FontSize="Medium" />
+
+            <HorizontalStackLayout>
+                <Button Text="Salvar" Command="{Binding SalvarCommand}"></Button>
+                <Button Text="Cancelar" Command="{Binding CancelarCommand}"></Button>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
