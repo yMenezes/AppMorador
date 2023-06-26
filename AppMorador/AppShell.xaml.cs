@@ -8,6 +8,6 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 
-		Routing.RegisterRoute("_moradorViewModel", typeof(CadastroMoradorView));
+		Routing.RegisterRoute("moradorViewModel", typeof(CadastroMoradorView));
 	}
 }

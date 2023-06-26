@@ -4,13 +4,13 @@ namespace AppMorador.Views.Moradores;
 
 public partial class CadastroMoradorView : ContentPage
 {
-	private CadastroMoradorViewModel _moradorViewModel;
+	private CadastroMoradorViewModel moradorViewModel;
 	public CadastroMoradorView()
 	{
 		InitializeComponent();
 
-		_moradorViewModel = new CadastroMoradorViewModel();
-		BindingContext = _moradorViewModel;
+        moradorViewModel = new CadastroMoradorViewModel();
+		BindingContext = moradorViewModel;
 		Title = "Novo Morador";
 	}
 }

@@ -10,16 +10,16 @@ using System.Windows.Input;
 
 namespace AppMorador.ViewModels.Moradores
 {
-    [QueryProperty("MoradorSeledionadoId", "mId")]
+    [QueryProperty("MoradorSelecionadoId", "mId")]
     public class CadastroMoradorViewModel : BaseViewModel
     {
         private MoradorService mService;
-        private string moradorSelecionadoId;
+
 
         public ICommand SalvarCommand { get; }
         public ICommand CancelarCommand { get; set; }
 
-        public CadastroMoradorViewModel() 
+        public CadastroMoradorViewModel()
         {
             string token = Preferences.Get("UsuarioToken", string.Empty);
             mService = new MoradorService(token);
@@ -49,9 +49,9 @@ namespace AppMorador.ViewModels.Moradores
             }
         }
 
-        public string Nome 
+        public string Nome
         {
-            get => nome; 
+            get => nome;
             set
             {
                 nome = value;
@@ -59,7 +59,7 @@ namespace AppMorador.ViewModels.Moradores
             }
         }
 
-        public string Cpf 
+        public string Cpf
         {
             get => cpf;
             set
@@ -69,9 +69,9 @@ namespace AppMorador.ViewModels.Moradores
             }
         }
 
-        public string Telefone 
-        { 
-            get => telefone; 
+        public string Telefone
+        {
+            get => telefone;
             set
             {
                 telefone = value;
@@ -79,8 +79,8 @@ namespace AppMorador.ViewModels.Moradores
             }
         }
 
-        public int IdApartamento 
-        { 
+        public int IdApartamento
+        {
             get => idApartamento;
             set
             {
@@ -95,11 +95,11 @@ namespace AppMorador.ViewModels.Moradores
             {
                 Morador model = new Morador()
                 {
+                    Id = this.id,
                     Nome = this.nome,
                     Cpf = this.cpf,
                     Telefone = this.telefone,
-                    IdApartamento = this.idApartamento,
-                    Id = this.id
+                    IdApartamento = this.idApartamento
                 };
                 if (model.Id == 0)
                     await mService.PostMoradorAsync(model);
@@ -116,16 +116,18 @@ namespace AppMorador.ViewModels.Moradores
             }
         }
 
+
         public async void CarregarMorador()
         {
             try
             {
                 Morador m = await mService.GetMoradorAsync(int.Parse(moradorSelecionadoId));
 
-                this.nome = m.Nome;
-                this.cpf = m.Cpf;
-                this.telefone = m.Telefone;
-                this.idApartamento = m.IdApartamento;
+                this.Id = m.Id;
+                this.Nome = m.Nome;
+                this.Cpf = m.Cpf;
+                this.Telefone = m.Telefone;
+                this.IdApartamento = m.IdApartamento;
             }
             catch (Exception ex)
             {
@@ -133,18 +135,17 @@ namespace AppMorador.ViewModels.Moradores
             }
         }
 
+        private string moradorSelecionadoId;
         public string MoradorSelecionadoId
-        {
+        { 
             set
             {
-                if(value == null)
+                if (value != null)
                 {
                     moradorSelecionadoId = Uri.UnescapeDataString(value);
                     CarregarMorador();
                 }
             }
         }
-
     }
-
 }

@@ -48,7 +48,7 @@ namespace AppMorador.ViewModels.Moradores
         {
             try
             {
-                await Shell.Current.GoToAsync("_moradorViewModel");
+                await Shell.Current.GoToAsync("moradorViewModel");
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace AppMorador.ViewModels.Moradores
                 if (value != null)
                 {
                     moradorSelecionado = value;
-                    Shell.Current.GoToAsync($"_moradorViewModel?mId={moradorSelecionado.Id}");
+                    Shell.Current.GoToAsync($"moradorViewModel?mId={moradorSelecionado.Id}");
                 }
             }
         }
